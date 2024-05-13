@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+/public/models/local_copies_to_ignore
 
 # debug
 npm-debug.log*
