@@ -15,11 +15,11 @@ Command: npx gltfjsx@6.2.16 polestar_custom.glb --types
 Finally, this file was heavily manually modified to integrate with physics
 */
 
-import * as THREE from 'three'
-import React, { RefObject, useMemo, useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
-import { GroupProps, useFrame } from '@react-three/fiber'
+import * as THREE from 'three';
+import React, { RefObject, useMemo, useRef } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { GLTF } from 'three-stdlib';
+import { GroupProps, useFrame } from '@react-three/fiber';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -267,7 +267,7 @@ export function PolestarCar({
       </group>
 
     </>
-  )
+  );
 }
 
 useGLTF.preload('/models/polestar_modified/polestar_custom.glb');
