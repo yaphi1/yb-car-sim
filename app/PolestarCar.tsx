@@ -171,18 +171,18 @@ export function PolestarCar({
             rotation={[-Math.PI / 2, 0, chassisRenderRotation]}
             position={[0, chassisRenderHeight, 0]}
           >
-            <mesh geometry={nodes.Polestar_1_Polestar1_Blackout_0.geometry} material={materials.Polestar1_Blackout} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Car_Paint_0.geometry} material={carPaint} material-color={color} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Chrome_0.geometry} material={materials.Polestar_1_Chrome} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Lamps_0.geometry} material={materials.Polestar_1_Lamps} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Plastic_0.geometry} material={materials.Polestar_1_Plastic} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Reflector_Red_0.geometry} material={materials.Polestar_1_Reflector_Red} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Reflector_White_0.geometry} material={materials.Polestar_1_Reflector_White} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Reverse_Light_0.geometry} material={materials.Polestar_1_Reverse_Light} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Side_View_Mirror_0.geometry} material={materials.Polestar_1_Side_View_Mirror} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Windows_0.geometry} material={materials.Polestar_1_Windows} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Windows_Red_Glass_0.geometry} material={materials.Polestar_1_Windows_Red_Glass} />
-            <mesh geometry={nodes.Polestar_1_Polestar_1_Windows_White_Glass_0.geometry} material={materials.Polestar_1_Windows_White_Glass} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar1_Blackout_0.geometry} material={materials.Polestar1_Blackout} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Car_Paint_0.geometry} material={carPaint} material-color={color} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Chrome_0.geometry} material={materials.Polestar_1_Chrome} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Lamps_0.geometry} material={materials.Polestar_1_Lamps} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Plastic_0.geometry} material={materials.Polestar_1_Plastic} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Reflector_Red_0.geometry} material={materials.Polestar_1_Reflector_Red} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Reflector_White_0.geometry} material={materials.Polestar_1_Reflector_White} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Reverse_Light_0.geometry} material={materials.Polestar_1_Reverse_Light} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Side_View_Mirror_0.geometry} material={materials.Polestar_1_Side_View_Mirror} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Windows_0.geometry} material={materials.Polestar_1_Windows} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Windows_Red_Glass_0.geometry} material={materials.Polestar_1_Windows_Red_Glass} />
+            <mesh castShadow geometry={nodes.Polestar_1_Polestar_1_Windows_White_Glass_0.geometry} material={materials.Polestar_1_Windows_White_Glass} />
           </group>
         </group>
       </group>
@@ -198,7 +198,7 @@ export function PolestarCar({
           <group scale={0.01} position-x={0.1}>
             <mesh geometry={nodes.Brake_disc002_Brake_Disc_0.geometry} material={materials.Brake_Disc} rotation={[0, 0, Math.PI]} scale={8.135} />
             <mesh geometry={nodes.Pirelli_P_Zero_Tire002_Pirelli_P_Zero_Tire_0.geometry} material={materials.Pirelli_P_Zero_Tire} scale={46.815} />
-            <mesh geometry={nodes.Polestar1_Rim_Chrome003_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} rotation={[0, 0, Math.PI]} scale={105.847} />
+            <mesh castShadow geometry={nodes.Polestar1_Rim_Chrome003_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} rotation={[0, 0, Math.PI]} scale={105.847} />
           </group>
         </group>
       </group>
@@ -208,7 +208,7 @@ export function PolestarCar({
           <group scale={0.01} position-x={-0.1}>
             <mesh geometry={nodes.Brake_disc_Brake_Disc_0.geometry} material={materials.Brake_Disc} scale={8.135} />
             <mesh geometry={nodes.Pirelli_P_Zero_Tire_Pirelli_P_Zero_Tire_0.geometry} material={materials.Pirelli_P_Zero_Tire} scale={46.815} />
-            <mesh geometry={nodes.Polestar1_Rim_Chrome002_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} scale={105.847} />
+            <mesh castShadow geometry={nodes.Polestar1_Rim_Chrome002_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} scale={105.847} />
           </group>
         </group>
       </group>
@@ -218,7 +218,7 @@ export function PolestarCar({
           <group scale={0.01} position-x={0.1}>
             <mesh geometry={nodes.Brake_disc003_Brake_Disc_0.geometry} material={materials.Brake_Disc} rotation={[0, 0, Math.PI]} scale={8.135} />
             <mesh geometry={nodes.Pirelli_P_Zero_Tire003_Pirelli_P_Zero_Tire_0.geometry} material={materials.Pirelli_P_Zero_Tire} rotation={[0, 0, Math.PI]} scale={46.815} />
-            <mesh geometry={nodes.Polestar1_Rim_Chrome004_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} rotation={[0, 0, Math.PI]} scale={105.847} />
+            <mesh castShadow geometry={nodes.Polestar1_Rim_Chrome004_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} rotation={[0, 0, Math.PI]} scale={105.847} />
           </group>
         </group>
       </group>
@@ -228,7 +228,7 @@ export function PolestarCar({
           <group scale={0.01} position-x={-0.1}>
             <mesh geometry={nodes.Brake_disc001_Brake_Disc_0.geometry} material={materials.Brake_Disc} scale={8.135} />
             <mesh geometry={nodes.Pirelli_P_Zero_Tire001_Pirelli_P_Zero_Tire_0.geometry} material={materials.Pirelli_P_Zero_Tire} scale={46.815} />
-            <mesh geometry={nodes.Polestar1_Rim_Chrome001_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} scale={105.847} />
+            <mesh castShadow geometry={nodes.Polestar1_Rim_Chrome001_Polestar1_Rim_Chrome_0.geometry} material={materials.Polestar1_Rim_Chrome} scale={105.847} />
           </group>
         </group>
       </group>
