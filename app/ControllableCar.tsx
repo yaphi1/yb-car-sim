@@ -1,5 +1,4 @@
 import { ColorRepresentation, Group, MathUtils, Mesh, Object3DEventMap, Quaternion, Vector3 } from "three";
-import { PolestarGenerated } from "./PolestarGenerated";
 import { useKeyboardControls } from "@react-three/drei";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
