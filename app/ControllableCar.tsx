@@ -103,23 +103,23 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
     if (!forwardPressed && !backwardPressed) {
       setAcceleration({ force: 0 });
     }
-    if (!brakePressed) {
-      const isNotAccelerating = !forwardPressed && !backwardPressed;
-      const shouldCarRest = speed < 0.5 && isNotAccelerating;
-      if (shouldCarRest) {
-        isAntiLockBrakeClamped.current = true;
-        setBrake({ force: 10 });
-      } else {
-        isAntiLockBrakeClamped.current = false;
-        setBrake({ force: 0 });
-      }
-    }
+    // if (!brakePressed) {
+    //   const isNotAccelerating = !forwardPressed && !backwardPressed;
+    //   const shouldCarRest = speed < 0.5 && isNotAccelerating;
+    //   if (shouldCarRest) {
+    //     isAntiLockBrakeClamped.current = true;
+    //     setBrake({ force: 10 });
+    //   } else {
+    //     isAntiLockBrakeClamped.current = false;
+    //     setBrake({ force: 0 });
+    //   }
+    // }
   }, [setAcceleration, setBrake, forwardPressed, backwardPressed, brakePressed]);
 
   useEffect(() => {
     chassisApi.velocity.subscribe((velocity) => {
-      const speed = new Vector3(...velocity).length();
-      setSpeed(speed);
+      const newSpeed = new Vector3(...velocity).length();
+      setSpeed(newSpeed);
     });
 
     chassisApi.position.subscribe((position) => {
@@ -136,10 +136,12 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
       // To get direction from quatnerion:
       // "just rotate your initial forward direction around the current rotation axis"
       // https://www.gamedev.net/forums/topic/56471-extracting-direction-vectors-from-quaternion/
-      const updatedDirection = new Vector3().copy(horizontalDirection);
-      updatedDirection.applyQuaternion(new Quaternion(...quaternion));
-      updatedDirection.y = 0;
-      setHorizontalDirection(updatedDirection);
+      setHorizontalDirection((currentHorizontalDirection) => {
+        const updatedDirection = new Vector3().copy(currentHorizontalDirection);
+        updatedDirection.applyQuaternion(new Quaternion(...quaternion));
+        updatedDirection.y = 0;
+        return updatedDirection;
+      });
     });
   }, [chassisApi]);
 

@@ -156,7 +156,6 @@ export function PolestarCar({
 
   const carPaint = useMemo(() => {
     return new THREE.MeshStandardMaterial({
-      color,
       metalness: 1,
       roughness: 0.1,
     });

@@ -24,7 +24,7 @@ export function Ground() {
       texture.wrapT = RepeatWrapping;
       texture.repeat.set(5, 5);
     });
-  }, []);
+  }, [normal, roughness]);
 
   return (
     <mesh rotation-x={Math.PI * -0.5} castShadow receiveShadow>
