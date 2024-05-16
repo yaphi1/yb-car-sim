@@ -16,7 +16,7 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
   color?: ColorRepresentation;
   startingPosition?: Vector3;
 }) {
-  const [speed, setSpeed] = useState(0);
+  const speed = useRef(0);
   const [position, setPosition] = useState(startingPosition);
   const [rotation, setRotation] = useState<Vector3>();
   const [horizontalDirection, setHorizontalDirection] = useState(new Vector3(0, 0, -1));
@@ -89,6 +89,18 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
       const brakeForce = isAntiLockBrakeClamped.current ? 10 : 0;
       setBrake({ force: brakeForce });
     }
+
+    if (!brakePressed) {
+      const isNotAccelerating = !forwardPressed && !backwardPressed;
+      const shouldCarRest = speed.current < 0.5 && isNotAccelerating;
+      if (shouldCarRest) {
+        isAntiLockBrakeClamped.current = true;
+        setBrake({ force: 10 });
+      } else {
+        isAntiLockBrakeClamped.current = false;
+        setBrake({ force: 0 });
+      }
+    }
   });
 
   useEffect(() => {
@@ -103,23 +115,12 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
     if (!forwardPressed && !backwardPressed) {
       setAcceleration({ force: 0 });
     }
-    // if (!brakePressed) {
-    //   const isNotAccelerating = !forwardPressed && !backwardPressed;
-    //   const shouldCarRest = speed < 0.5 && isNotAccelerating;
-    //   if (shouldCarRest) {
-    //     isAntiLockBrakeClamped.current = true;
-    //     setBrake({ force: 10 });
-    //   } else {
-    //     isAntiLockBrakeClamped.current = false;
-    //     setBrake({ force: 0 });
-    //   }
-    // }
   }, [setAcceleration, setBrake, forwardPressed, backwardPressed, brakePressed]);
 
   useEffect(() => {
     chassisApi.velocity.subscribe((velocity) => {
       const newSpeed = new Vector3(...velocity).length();
-      setSpeed(newSpeed);
+      speed.current = newSpeed;
     });
 
     chassisApi.position.subscribe((position) => {
@@ -164,7 +165,7 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
         <group>
           <PolestarCar
             color={color}
-            speed={speed}
+            speed={speed.current}
             carRenderPosition={carRenderPosition}
             carRotation={rotation}
             horizontalDirection={horizontalDirection}
