@@ -6,6 +6,7 @@ import { ControllableCar } from "./ControllableCar";
 import { Debug, Physics } from "@react-three/cannon";
 import { Vector3 } from "three";
 import { useColors } from "./useColors";
+import { useControls } from "leva";
 
 function CarShow() {
   const carColor = useColors();
@@ -55,6 +56,20 @@ function CarShow() {
 }
 
 export function Experience() {
+  useControls(
+    'Controls',
+    {
+      'Move': {
+        value: 'Arrows or w/a/s/d',
+        editable: false,
+      },
+      'Brake': {
+        value: '"b" or space',
+        editable: false,
+      },
+    },
+  );
+
   const map = [
     { name: 'forward', keys: ['w', 'ArrowUp'] },
     { name: 'backward', keys: ['s', 'ArrowDown'] },
