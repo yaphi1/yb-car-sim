@@ -8,8 +8,9 @@ import { WheelDebug } from "./WheelDebug";
 import { CarCamera } from "./CarCamera";
 import { PolestarCar } from "./PolestarCar";
 
-const carRenderPosition: Vector3 = new Vector3(0, 0, 0);
+const carRenderPosition = new Vector3(0, 0, 0);
 const maxSteeringAngle = 0.35;
+const startingDirection = new Vector3(0, 0, -1);
 
 export function ControllableCar({ color = 0x5500aa, startingPosition = new Vector3(0, 0, 0) }: 
 {
@@ -19,7 +20,7 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
   const speed = useRef(0);
   const [position, setPosition] = useState(startingPosition);
   const [rotation, setRotation] = useState<Vector3>();
-  const [horizontalDirection, setHorizontalDirection] = useState(new Vector3(0, 0, -1));
+  const [horizontalDirection, setHorizontalDirection] = useState(startingDirection);
   const [steeringValue, setSteeringValue] = useState(0);
   const forwardPressed = useKeyboardControls(state => state.forward);
   const backwardPressed = useKeyboardControls(state => state.backward);
@@ -137,8 +138,8 @@ export function ControllableCar({ color = 0x5500aa, startingPosition = new Vecto
       // To get direction from quatnerion:
       // "just rotate your initial forward direction around the current rotation axis"
       // https://www.gamedev.net/forums/topic/56471-extracting-direction-vectors-from-quaternion/
-      setHorizontalDirection((currentHorizontalDirection) => {
-        const updatedDirection = new Vector3().copy(currentHorizontalDirection);
+      setHorizontalDirection(() => {
+        const updatedDirection = new Vector3().copy(startingDirection);
         updatedDirection.applyQuaternion(new Quaternion(...quaternion));
         updatedDirection.y = 0;
         return updatedDirection;
